@@ -1,3 +1,0 @@
-if (self.CavalryLogger) { CavalryLogger.start_js(["97lMF"]); }
-
-__d("AdsAuthorizationInPagesLoadedDataReducer",["AdsAuthorizationCategoryDataProvider","AdsAuthorizationInPagesLoadedDataReducerPlugin","AdsDataReducer"],(function(a,b,c,d,e,f){"use strict";a=b("AdsDataReducer").create(b("AdsAuthorizationCategoryDataProvider"),{},b("AdsAuthorizationInPagesLoadedDataReducerPlugin").reduce);e.exports=a}),null);

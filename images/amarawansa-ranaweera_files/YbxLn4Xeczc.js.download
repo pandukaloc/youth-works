@@ -1,3 +1,0 @@
-if (self.CavalryLogger) { CavalryLogger.start_js(["mkr07"]); }
-
-__d("AdsUEditorAdgroupSetBrandedContentSponsorPageDataActionPlugin",[],(function(a,b,c,d,e,f){"use strict";a={key:"uEditorAdgroupSetBrandedContentSponsorPage",actionType:"ADS_ADGROUP_EDITOR_SET_BRANDED_CONTENT_SPONSOR_PAGE"};e.exports=a}),null);

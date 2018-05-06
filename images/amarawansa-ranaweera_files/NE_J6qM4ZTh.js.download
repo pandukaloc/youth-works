@@ -1,3 +1,0 @@
-if (self.CavalryLogger) { CavalryLogger.start_js(["2EAkt"]); }
-
-__d("AdsAuthorizationCategoryDataProvider",["AdsAuthorizationCategoryDataProviderPlugin","AdsDataProvider"],(function(a,b,c,d,e,f){"use strict";e.exports=b("AdsDataProvider").create(b("AdsAuthorizationCategoryDataProviderPlugin"),"AdsAuthorizationCategoryDataProviderPlugin")}),null);

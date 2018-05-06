@@ -1,3 +1,0 @@
-if (self.CavalryLogger) { CavalryLogger.start_js(["IRIgC"]); }
-
-__d("AdsUEditorAdgroupSetBrandedContentSponsorPageActionHandler",["AdsMutators","AdsUEditorAdgroupActionHandlerCommon","AdsUEditorAdgroupSetBrandedContentSponsorPageDataActionPlugin","AdsUnifiedCreativeAPIFields","nullthrows"],(function(a,b,c,d,e,f){"use strict";a={type:b("AdsUEditorAdgroupSetBrandedContentSponsorPageDataActionPlugin").actionType,genExtraData:b("AdsUEditorAdgroupActionHandlerCommon").genSpecPathPluginForExtraData,mutate:function(a,c,d){return b("AdsMutators").mutateEach(c,a.ids,function(c){return c.setIn(b("AdsUnifiedCreativeAPIFields").brandedContentSponsorPageID.getPath(c,b("nullthrows")(d[c.id])),a.pageID)})}};e.exports=a}),null);

@@ -71,6 +71,7 @@ Table of Contents End
 @import url(http://fonts.googleapis.com/css?family=Lobster);
 @import url(http://fonts.googleapis.com/css?family=Roboto:300,400,500,700);
 
+
 /* 1 - Google Font End 
 ------------------------------------------------------------------------*/
 
@@ -460,16 +461,16 @@ select option {
 /* 2.4 ------- Parallax Backgrounds -------*/
 
 #donate {
-    background: url(../../images/background/1.jpg) no-repeat fixed center top;
+    background: url(../../images/background/bg-four.jpg) no-repeat fixed center top;
 }
 .gallery-top {
     background: url(../../images/background/2.jpg) no-repeat fixed center top;
 }
 #partners {
-   background: url(../../images/background/3.jpg) no-repeat fixed center top;
+   background: url(../../images/background/ourpartners.jpg) no-repeat fixed center top;
 }
 #testimonial {
-    background: url(../../images/background/4.jpg) no-repeat fixed center top; 
+    background: url(../../images/background/professional-youth.jpg) no-repeat fixed center top;
 }
 #subscribe {
     background: url(../../images/background/5.jpg) no-repeat fixed center top;
@@ -713,6 +714,9 @@ select.bfh-languages>option {
     font-weight: 800;
     margin-right: 5px;
 }
+.navbar-brand img{
+    width: 90px;
+}
 .navbar-default .navbar-nav>.active>a, 
 .navbar-default .navbar-nav>.open>a,
 .navbar-default .navbar-nav>.active>a, 
@@ -823,7 +827,7 @@ select.bfh-languages>option {
 }
 .slide1 .tp-title,
 .slide1 .tp-sub-title {
-    color: #ffffff;
+    color: #c5983f94;;
     font-family: 'Open Sans' !important;
     font-weight: 800;
     text-transform: uppercase;
@@ -934,6 +938,9 @@ select.bfh-languages>option {
     height: 0px;
     opacity: 0;
 
+    font-size: 13px;
+    line-height: 1.1;
+
     -webkit-transition: all .25s ease-in-out;
     -moz-transition: all .25s ease-in-out;
     -ms-transition: all .25s ease-in-out;
@@ -1023,13 +1030,14 @@ select.bfh-languages>option {
 .donate-description,
 .partners .description {
     color: #ffffff;
-    font-family: 'Lobster';
-    font-size: 24px;
+    font-family: 'Open Sans';
+    font-size: 20px;
     line-height: 34px;
     padding: 0px 22% 0px 22%; 
     text-transform: capitalize;
     word-spacing: 2px;
 }
+
 .donate-details {
     `padding: 5px 0px 0px 0px;
 }
@@ -1071,6 +1079,7 @@ select.bfh-languages>option {
 }
 .donate-count:nth-child(3) {
     background-color: #27ae60;
+
 }
 .donate-count .currency {
     margin-right: -10px;
@@ -1140,6 +1149,7 @@ select.bfh-languages>option {
 }
 .volunteer-details {
     padding: 24px 0px 0px 0px;
+    min-height: 200px;
 }
 .volunteer {
     border: 1px solid #d8d8d8;
@@ -1198,7 +1208,7 @@ select.bfh-languages>option {
     color: #ffffff !important;
 }
 .volunteer:hover .volunteer-social {
-    background-color: #ff5722;
+    background-color: rgba(208, 168, 66, 0.88);
 }
 
 .stories-thumbnail{
@@ -1302,6 +1312,8 @@ select.bfh-languages>option {
 }
 .helps .item-inner {
     padding: 30px 40px 52px 40px;
+    min-height:  510px;
+    max-height: 100px;
 }
 .helps .item-icon {
     color: #262626;
@@ -1316,7 +1328,13 @@ select.bfh-languages>option {
 }
 .helps .item-description {
     font-family: 'Roboto';
-    font-size: 15px;
+    font-size: 13px;
+    line-height: 22px;
+    padding-top: 10px;
+}
+.helps .item-description ul  {
+    font-family: 'Roboto';
+    font-size: 13px;
     line-height: 22px;
     padding-top: 10px;
 }
@@ -1853,7 +1871,7 @@ select.bfh-languages>option {
 
 /* 15 ------- Partners Section --------*/
 .partners .parallax-style {
-    background: rgba(255, 87, 34, 0.85)
+    background: rgba(18, 19, 17, 0.57)
 }
 .partners .section-padding {
     padding-bottom: 110px;
@@ -1894,6 +1912,16 @@ select.bfh-languages>option {
 }
 .logo-list .owl-page.active {
     background-color: #808080;
+}
+
+.parnerhead{
+    padding: 0px;
+    padding-top: 20px;
+}
+.parnerhead h4{
+    color: #FFFFFF;
+    line-height: 1.4;
+    font-size: 16px;
 }
 
 /* 16 ------- Blog Section --------*/
@@ -2181,6 +2209,10 @@ select.bfh-languages>option {
 .google-map-container {
     width: 100%;
     height: 600px;
+}
+.google-map-container iframe{
+    width: 100%;
+    height: 100%;
 }
 .marker-info {
     color: #666666;
