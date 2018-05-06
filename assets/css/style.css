@@ -951,10 +951,10 @@ select.bfh-languages>option {
     background-color: #ececec;
 }
 .about-bottom .section-padding {
-    padding: 135px 0;
+    padding: 50px 0;
 }
 .about-bottom .col-md-6 {
-    padding: 0px;
+    padding: 50px 0;
 }
 .about-bottom .col-md-6:first-child {
     padding: 0px 30px 0px 7.9%;
@@ -1044,7 +1044,7 @@ select.bfh-languages>option {
     background: rgba( 255, 255, 255, 0.4 );
     color: #ffffff;
     display: inline-block;
-    font-size: 60px;
+    font-size: 35px;
     font-weight: 800;
     min-width: 275px;
     padding: 30px 25px;
@@ -1057,11 +1057,12 @@ select.bfh-languages>option {
 .donate-count:nth-child(2) {
     background-color: #ff5722;
     padding: 0px;
+    margin: 0px 5px 0px 5px;
 }
 .donate-count:nth-child(2) .count-number.counter,
 .donate-count:nth-child(2) .percentage,
 .donate-count:nth-child(2) .text {
-    font-size: 33px;
+    font-size: 30px;
     font-weight: 800;
 }
 .donate-count:nth-child(2) .donate-title {
@@ -1198,6 +1199,10 @@ select.bfh-languages>option {
 }
 .volunteer:hover .volunteer-social {
     background-color: #ff5722;
+}
+
+.stories-thumbnail{
+    padding: 40px 0px 0px 30px;
 }
 
 /* 9 ------- Featured Section --------*/
@@ -1860,22 +1865,22 @@ select.bfh-languages>option {
 .partners .section-details {
     padding-top: 68px;
 }
-.logo-list img,
-.photo-list img {
-    -webkit-filter: grayscale(1);
-    -moz-filter: grayscale(1);
-    -ms-filter: grayscale(1);
-    -o-filter: grayscale(1);
-    filter: grayscale(1);
-}
-.logo-list li:hover img,
-.photo-list li:hover img {
-    -webkit-filter: grayscale(0);
-    -moz-filter: grayscale(0);
-    -ms-filter: grayscale(0);
-    -o-filter: grayscale(0);
-    filter: grayscale(0);
-}
+/*.logo-list img,*/
+/*.photo-list img {*/
+    /*-webkit-filter: grayscale(1);*/
+    /*-moz-filter: grayscale(1);*/
+    /*-ms-filter: grayscale(1);*/
+    /*-o-filter: grayscale(1);*/
+    /*filter: grayscale(1);*/
+/*}*/
+/*.logo-list li:hover img,*/
+/*.photo-list li:hover img {*/
+    /*-webkit-filter: grayscale(0);*/
+    /*-moz-filter: grayscale(0);*/
+    /*-ms-filter: grayscale(0);*/
+    /*-o-filter: grayscale(0);*/
+    /*filter: grayscale(0);*/
+/*}*/
 .logo-list .owl-pagination {
     padding-top: 50px;
 }

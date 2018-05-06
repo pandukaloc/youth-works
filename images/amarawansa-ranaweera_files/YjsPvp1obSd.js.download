@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["SxCyF"]); }
+
+__d("AdsAuthorizationCategoryDataProviderPlugin",["AdsAccountDataLoader","AdsAuthorizationInPagesLoadedDataAction","LoadObjectMap","promiseDone","promiseLoadObjectsFromKeys"],(function(a,b,c,d,e,f){"use strict";a={initialValue:new(b("LoadObjectMap"))(function(a){b("promiseDone")(b("promiseLoadObjectsFromKeys")(a,b("AdsAccountDataLoader").fetchPagesInAuthorizations),function(a){b("AdsAuthorizationInPagesLoadedDataAction").dispatch({pagesInAuthorizations:a})})})};e.exports=a}),null);

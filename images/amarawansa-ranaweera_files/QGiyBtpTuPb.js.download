@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["EeaXd"]); }
+
+__d("PageContentTabVideosCopyrightPendingClaimActionsConfig",["fbt","PageContentTabCommonConfig","PageContentTabVideosCopyrightActions","VideoCopyrightMatchActionTypes"],(function(a,b,c,d,e,f,g){"use strict";a=[{allowBatch:!1,getLabel:function(a,b,c){return g._("Cancel Request")},key:b("VideoCopyrightMatchActionTypes").CANCEL_CLAIM,onClick:function(a,c){b("PageContentTabCommonConfig").showConfirmationDialog(g._("Delete Match"),g._("This match will be permanently removed from your dashboard."),g._("Delete"),function(){b("PageContentTabVideosCopyrightActions").updateMatchState(a,b("VideoCopyrightMatchActionTypes").REMOVE_FROM_DASHBOARD,c)},null)}}];e.exports=a}),null);

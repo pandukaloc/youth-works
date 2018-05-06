@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["EzWcp"]); }
+
+__d("AdsUEditorAdgroupSaveDynamicAdCustomizationsActionHandler",["AdsMutators","AdsUEditorAdgroupSaveDynamicAdCustomizationsDataActionPlugin"],(function(a,b,c,d,e,f){"use strict";a={type:b("AdsUEditorAdgroupSaveDynamicAdCustomizationsDataActionPlugin").actionType,mutate:function(a,c){return b("AdsMutators").mutateEach(c,a.ids,function(b,c){b=a.draftAdgroup;return b})}};e.exports=a}),null);

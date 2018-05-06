@@ -2048,11 +2048,17 @@
 	}
 	.donate .countdown {
 		margin: 35px 0 0 0;
+		padding: 30px;
+
+
 	}
 	.donate-count {
-		font-size: 45px;
+		font-size: 30px;
 		min-width: 200px;
 		padding: 20px 15px;
+		display: flow-root !important;
+		margin-bottom: 5%;
+
 	}
 	.donate-count:nth-child(2) .donate-title {
 		font-size: 45px;
@@ -2069,7 +2075,7 @@
 		font-size: 30px;
 	}
 	.donate-count:nth-child(2) .donate-title {
-		font-size: 55px;
+		font-size: 40px;
 	}
 	.about-bottom .col-sm-6:first-child {
 		padding-left: 4.5%;
@@ -3786,7 +3792,7 @@
 		background: none;
 	}
 	.donate-count {
-		font-size: 40px;
+		font-size: 30px;
 		margin-bottom: 30px;
 		min-width: inherit;
 		width: 100%;
@@ -4096,7 +4102,7 @@
 		background: none;
 	}
 	.donate-count {
-		font-size: 40px;
+		font-size: 27px;
 		margin-bottom: 30px;
 		min-width: inherit;
 		width: 100%;
