@@ -373,7 +373,14 @@ select option {
     top: -110px !important;
     opacity: 0;
 }
-
+.about-us{
+  background: #cea12b;
+background: -moz-linear-gradient(top, #cea12b 0%, #a96e29 100%);
+background: -webkit-linear-gradient(top, #cea12b 0%,#a96e29 100%);
+background: linear-gradient(to bottom, #cea12b 0%,#a96e29 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cea12b', endColorstr='#a96e29',GradientType=0 );
+  
+}
 /* 2.2 -------- Carousel Settings ---------*/
 .carousel-control.left,
 .carousel-control.right {
@@ -862,7 +869,9 @@ select.bfh-languages>option {
     padding: 12px 20px;
     text-transform: uppercase;
 }
-
+.causes{
+    background-color:#272727;
+}
 /* 5 -------- About Section ---------*/
 .about-us
 .about-details {
@@ -875,6 +884,7 @@ select.bfh-languages>option {
     z-index: 1;
     max-height: 210px;
     min-height: 210px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2); 
 }
 .about-details .col-sm-4:first-child .item {
     background-color: #9b59b6;
@@ -1065,7 +1075,8 @@ select.bfh-languages>option {
 .donate-count:nth-child(2) {
     background-color: #ff5722;
     padding: 0px;
-    margin: 0px 5px 0px 5px;
+    /*margin: 0px 5px 0px 5px;*/
+    
 }
 .donate-count:nth-child(2) .count-number.counter,
 .donate-count:nth-child(2) .percentage,
@@ -1312,8 +1323,9 @@ select.bfh-languages>option {
 }
 .helps .item-inner {
     padding: 30px 40px 52px 40px;
-    min-height:  510px;
-    max-height: 100px;
+    min-height:  550px;
+    max-height: 550px;
+    overflow: auto;
 }
 .helps .item-icon {
     color: #262626;
@@ -1384,7 +1396,8 @@ select.bfh-languages>option {
     padding-bottom: 0px !important;
 }
 .fluid-width-video-wrapper {
-    padding-top: 87% !important;
+    padding-top: 0% !important;
+    height:56.25vw;
 }
 .stories .donate-btn {
     background-color: #3f51b5;
@@ -2146,7 +2159,7 @@ select.bfh-languages>option {
 }
 .form-input:first-child .form-icon, 
 .form-input:nth-child(3) .form-icon {
-    left: 19px;
+    left: 20px;
 }
 .form-icon:after {
     content: '';
@@ -3777,4 +3790,103 @@ mark {
 }
 .achieve .media-left {
     padding-right: 25px;
+}
+.navbar-default .navbar-brand{
+    padding:0px;
+}
+@media(max-width:768px){
+.contact-list li {
+    padding-right: 10px;
+}
+.contact-list a {
+    font-family: 'Open Sans';
+    font-size: 12px;
+    font-weight: 300;
+}
+.header-top .phone-no {
+    font-size: 12px;
+}
+.navbar-default .navbar-brand{
+    padding-left:10px;
+}
+.volunteer-name{
+    font-size:16px;
+}
+.stories .col-md-6:first-child{
+    padding:0px;
+}
+.stories-thumbnail {
+    padding: 0px;
+    padding-top:15px;
+    padding-bottom:15px;
+}
+.fluid-width-video-wrapper{
+    width: 90% !important;
+    height: 53.25vw !important;
+    margin:0 auto;
+    padding-top: 0 !important
+}
+
+}
+
+.countdown {
+    position: relative;
+    font-size: 13vw;
+    font-weight: 900;
+    color: white;
+    opacity: 0;
+    transition: opacity 500ms;
+}
+.countdown:before, .countdown:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.countdown:before {
+    content: "";
+    width: 25vw;
+    height: 25vw;
+    border-radius: 50%;
+    background: white;
+}
+.countdown:after {
+    content: attr(data-countdown);
+    background: linear-gradient(45deg, rgba(58, 28, 113, 0.75), #d76d77, #ffaf7b);
+    background-attachment: fixed;
+    content: attr(data-countdown);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.countdown.start {
+    opacity: 1;
+}
+.countdown.start:before {
+    -webkit-animation: before infinite alternate 500ms;
+    animation: before infinite alternate 500ms;
+}
+@-webkit-keyframes before {
+    0% {
+        -webkit-transform: translate(-50%, -50%) scale(1);
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: translate(-50%, -50%) scale(0.75);
+        transform: translate(-50%, -50%) scale(0.75);
+        opacity: 0.75;
+    }
+}
+@keyframes before {
+    0% {
+        -webkit-transform: translate(-50%, -50%) scale(1);
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: translate(-50%, -50%) scale(0.75);
+        transform: translate(-50%, -50%) scale(0.75);
+        opacity: 0.75;
+    }
 }
