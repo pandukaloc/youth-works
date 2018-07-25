@@ -89,7 +89,7 @@
       var volunteerSlider = $("#volunteers-slider");
 
       volunteerSlider.owlCarousel({
-      	autoPlay : 3000,
+      	autoPlay : 5000,
       	stopOnHover : true,
       	navigation:true,
       	paginationNumbers: false,
@@ -300,52 +300,4 @@
       });
 
 
-
-/* Contact
--------------------------------------------------------------------*/
-    // Email from Validation
-    jQuery('#submit').on("click", function(e){ 
-
-    //Stop form submission & check the validation
-    e.preventDefault();
-
-
-    // Variable declaration
-    var error = false;
-    var k_name = jQuery('#name').val();
-    var k_email = jQuery('#email').val(); 
-    var k_message = jQuery('#message').val();
-
-
-
-
-    /* Post Ajax function of jQuery to get all the data from the submission of the form as soon as the form sends the values to email.php*/
-    $.post("email.php", $("#contactform").serialize(),function(result){
-        //Check the result set from email.php file.
-        if(result == 'sent'){
-
-          //If the email is sent successfully, remove the submit button
-          $('#name').remove();
-          $('#email').remove();
-          $('#message').remove();
-          $('#submit').remove(); 
-
-          $('.contact-message').html('<i class="fa fa-check contact-success"></i><div>Your message has been sent.</div>').fadeIn();
-        } else {
-         $('.contact-message').html('<i class="fa fa-thumbs-up contact-success"></i><div>Your message has been sent</div>').fadeIn();
-
-       }
-     });
-
-  });  
-
-
-      function validateEmail(sEmail) {
-      	var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-      	if (filter.test(sEmail)) {
-      		return true;
-      	} else {
-      		return false;
-      	}
-      } 
 

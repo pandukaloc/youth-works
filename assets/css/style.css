@@ -108,7 +108,7 @@ a {
     transition: all .25s ease-in-out;
 }
 a:hover {
-    color: #ff5722 !important;
+    color: #e48b04eb !important;
 } 
 a:focus {
     text-decoration: none !important;
@@ -390,7 +390,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cea12b', end
 
 /* 2.3 ------ Sections Common Styles -------*/
 .section-padding {
-    padding: 150px 0px 150px 0px;
+    padding: 35px 0px 80px 0px;
 }
 .section-top {
     overflow: auto;
@@ -471,7 +471,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cea12b', end
     background: url(../../images/background/bg-four.jpg) no-repeat fixed center top;
 }
 .gallery-top {
-    background: url(../../images/background/2.jpg) no-repeat fixed center top;
+    background: url(../../images/background/gallery.jpg) no-repeat fixed center top;
 }
 #partners {
    background: url(../../images/background/ourpartners.jpg) no-repeat fixed center top;
@@ -546,7 +546,7 @@ select.bfh-languages {
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
-    -0-appearance: none;
+    --appearance: none;
 }
 select:focus,
 select.bfh-languages>option {
@@ -732,7 +732,7 @@ select.bfh-languages>option {
     background: transparent;
     background-image: none;
     box-shadow: none;
-    color: #e74c3c;
+    color: #e48b04eb;
 }
 .navbar-default .navbar-nav li a {
     background: transparent;
@@ -1049,14 +1049,14 @@ select.bfh-languages>option {
 }
 
 .donate-details {
-    `padding: 5px 0px 0px 0px;
+    padding: 5px 0px 0px 0px;
 }
 .donate .countdown {
-    margin-top: 38px;
+    /*margin-top: 38px;*/
     background-color: rgba(255, 255, 255, 0.15);
     padding: 25px 0px;
-    margin-left: 7%;
-    margin-right: 7%;
+    /*margin-left: 7%;*/
+    /*margin-right: 7%;*/
 }
 .donate-count {
     background: rgba( 255, 255, 255, 0.4 );
@@ -1569,11 +1569,11 @@ select.bfh-languages>option {
     text-transform: uppercase;
 }
 .itemFilter a:hover {
-    color: #ff5722;
+    color: #e48b04eb;
 }
 .itemFilter .current {
-    background-color: #ff5722;
-    border-color: #ff5722;
+    background-color: #e48b04eb;
+    border-color: #e48b04eb;
     color: #ffffff !important;
 }
 .gallery-items .item {
@@ -1585,7 +1585,7 @@ select.bfh-languages>option {
 }
 .image-popup-vertical-fit:before {
     content: '';
-    background: rgba(231, 76, 60, 0.85);
+    background: rgba(255, 188, 37, 0.76);
     width: 100%;
     height: 101%;
     top: 0px;
@@ -1618,7 +1618,7 @@ select.bfh-languages>option {
     z-index: 999;
 }
 .gallery-items .item-title {
-    color: #ffffff;
+    color: #262626;
     font-size: 15px;
     font-family: 'Open Sans';
     padding-top: 40%;
@@ -2139,7 +2139,7 @@ select.bfh-languages>option {
     font-family: 'Open Sans';
     height: inherit;
     margin-bottom: 15px;
-    padding: 15px 15px 15px 60px;
+    padding: 15px 15px 9px 60px;
 }
 .contact input {
     display: inline-block;
@@ -2152,14 +2152,23 @@ select.bfh-languages>option {
     color: #a6a6a6;
     height: 45px;
     width: 45px;
-    left: 4px;
-    top: 4px;
+    left: 16px;
+    top: 2%;
     line-height: 45px;
     position: absolute;
+    padding-top: 10px;
 }
+
+
+
 .form-input:first-child .form-icon, 
 .form-input:nth-child(3) .form-icon {
-    left: 20px;
+    left: 16px;
+}
+
+.form-input .last {
+    left: 1px;
+    top: 1px;
 }
 .form-icon:after {
     content: '';
@@ -3111,7 +3120,7 @@ footer .widget-details {
     font-size: 30px;
     height: 40px;
     width: 40px;
-    background-color: #e74c3c;
+    background-color: #e6aa00de;
     line-height: 40px;
     color: #ffffff;
     text-align: center;
@@ -3834,7 +3843,7 @@ mark {
     font-size: 13vw;
     font-weight: 900;
     color: white;
-    opacity: 0;
+    /*opacity: 0;*/
     transition: opacity 500ms;
 }
 .countdown:before, .countdown:after {
@@ -3844,13 +3853,13 @@ mark {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
-.countdown:before {
-    content: "";
-    width: 25vw;
-    height: 25vw;
-    border-radius: 50%;
-    background: white;
-}
+/*.countdown:before {*/
+    /*content: "";*/
+    /*width: 25vw;*/
+    /*height: 25vw;*/
+    /*border-radius: 50%;*/
+    /*background: white;*/
+/*}*/
 .countdown:after {
     content: attr(data-countdown);
     background: linear-gradient(45deg, rgba(58, 28, 113, 0.75), #d76d77, #ffaf7b);

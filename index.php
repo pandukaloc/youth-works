@@ -38,13 +38,18 @@
   <link rel="stylesheet" href="assets/css/responsive.css">
   <!-- Include Themepunch Settings Css -->
   <link rel="stylesheet" href="assets/css/settings.css">
+<!--Bugfixxes of caas added here-->
+    <link rel="stylesheet" href="assets/css/bugfix.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!--[if lt IE 9]>
   <script src="assets/js/html5shiv.js"></script>
   <![endif]-->
-
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="assets/js/jquery-ui-1.12.1/jquery-ui.js"></script>
 
 
 
@@ -155,9 +160,9 @@
             <li><a href="#about-us">About us</a></li>
             <li><a href="#volunteers">Our team</a></li>
             <li><a href="#help">Whats make pywa</a></li>
-            <!--                    <li><a href="#gallery">Gallery</a></li>-->
-            <!--                    <li><a href="#events">Events</a></li>-->
-            <!--                    <li><a href="#blog">News</a></li>-->
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#blog">News</a></li>
             <!--                    <li class="menu-item-has-children dropdown">-->
             <!--                      <a id="dLabel" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">-->
             <!--                        Pages-->
@@ -291,11 +296,13 @@
           The Professional Youth Workers’ Association (PYWA) of Sri Lanka represents youth work and youth workers in Sri Lanka. PYWA defines youth work as <strong>"appropriate processes conducted by youth workers with the active and willing participation of young people that enables and empowers them through ensuring their emotional, social, ethical, intellectual and physical development, in a caring and secure environment" </strong>.<br />
           Youth work is a profession that contributes to the growth of young people’s self-esteem, capacities of democratic leadership, and capacities for participation in decisions that affect the lives of young people and communities. Youth work also supports the enhancement of young people’s productivity, employability skills and skills in promoting social cohesion and peace. PYWA recognizes the centrality and significance of youth work in enhancing the wellbeing of young people as well as in realizing national development goals.</p>
 
-        <div style="display:none;" class="btn-container">
-          <a href="#" class="btn btn-sm more-btn">Learn More</a>
-          <a href="#" class="btn btn-sm donate-btn">Donate</a>
-        </div><!-- /.btn-container -->
-      </div><!-- /.section-padding -->
+<!--        <div  class="btn-container">-->
+<!--          <a href="#" class="btn btn-sm more-btn">Learn More</a>-->
+<!--          <a href="#" class="btn btn-sm donate-btn">Donate</a>-->
+<!--        </div>-->
+        <!-- /.btn-container -->
+      </div>
+      <!-- /.section-padding -->
     </div>
 
     <div class="col-md-6">
@@ -367,8 +374,114 @@
         <div class="modal-body">
           <p>
             By becoming a Full member of the PYWA a youth worker will be recognized as a member in the professional community within the country and the Commonwealth. Members will also be able to access training, including OID training, at nominal cost. Members will be able to connect with youth workers within and outside Sri Lanka. In addition, members will receive the benefits of PYWA’s membership in CAYWA, and obtain opportunities for learning from international good practice in youth work.
-
           </p>
+         <a id="reg-btn" class=" btn btn-sm" ><h4 class="regtitle" >Join Us</h4></a>
+<style>
+  .regfourm{
+    width: inherit;
+    padding: 0;
+    margin-top: 30px;
+  }
+  .regfourm .row{
+    line-height: 2;
+  }
+</style>
+          <div style="display:none" class="regfourm container">
+            <h1 class="well">Full Membership Registration Form</h1>
+            <div class="col-lg-12 well">
+              <div class="row">
+                <form action="regestration.php" method="post" id="fullmember" class="regestration-form" role="form"  >
+                  <div style="padding:0;" id="messages" class="messages">
+                    <?php if(isset($message)&&!empty($message)){
+                      echo $message;
+                    }?>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="row">
+                      <div class="col-sm-2 form-group">
+                        <label>Title</label>
+                        <select name="title" id="title" class="form-control">
+                          <option value="" >select</option>
+                          <option value="t1" >Mr.</option>
+                          <option value="t2" >Mrs.</option>
+                          <option value="t3" >Ms.</option>
+                          <option value="t4" >Rav.</option>
+                          <option value="t5" >Prof.</option>
+                        </select>
+                      </div>
+                      <div class="col-sm-5 form-group">
+                        <label>First Name</label>
+                        <input name="firstname" id="firstname" type="text" placeholder="Enter First Name Here.." class="form-control">
+                      </div>
+                      <div class="col-sm-5 form-group">
+                        <label>Last Name</label>
+                        <input name="lastname" id="lastname" type="text" placeholder="Enter Last Name Here.." class="form-control">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6 form-group">
+                        <label>Date Of Birth </label>
+                        <input name="dob" id="dob" type="text" readonly placeholder="Enter Date Of Birth Here.." class="form-control">
+                      </div>
+                      <div class="col-sm-6 form-group">
+                        <label>Gender</label>
+                        <select name="gender" id="gender" class="form-control">
+                          <option value="" >Select</option>
+                          <option value="1" >Male</option>
+                          <option value="0" >Female</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Address</label>
+                      <textarea name="address" id="address" placeholder="Enter Address Here.." rows="3" class="form-control"></textarea>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-4 form-group">
+                        <label>City</label>
+                        <input name="city" id="city" type="text" placeholder="Enter City Name Here.." class="form-control">
+                      </div>
+                      <div class="col-sm-4 form-group">
+                        <label>State</label>
+                        <input name="state" id="state" type="text" placeholder="Enter State Name Here.." class="form-control">
+                      </div>
+                      <div class="col-sm-4 form-group">
+                        <label>Zip</label>
+                        <input name="zip" id="zip" type="text" placeholder="Enter Zip Code Here.." class="form-control">
+                      </div>
+                    </div>
+                    <div class="row">
+                     <div class="col-sm-6 form-group">
+                      <label>Phone Number</label>
+                      <input name="contactno" id="contactno" type="text" placeholder="Enter Phone Number Here.." class="form-control">
+                    </div>
+                    <div class=" col-sm-6 form-group">
+                      <label>Email Address</label>
+                      <input name="email" id="email" type="email" placeholder="Enter Email Address Here.." class="form-control">
+
+                      </div>
+                      <div class="col-sm-12 form-group">
+                        <label>Message</label>
+                        <textarea name="inquiry" id="inquiry" placeholder="Enter Message.." rows="3" class="form-control"></textarea>
+                    </div>
+
+
+                    <div class="col-sm-12 ">
+                      <div class="form-group">
+                        <div class="g-recaptcha" data-sitekey="6LcBQGIUAAAAAE75pa8LbKUZyYwbQUff3USrZVfV"></div>
+                        <span class="help-block with-errors"></span>
+                      </div>
+                    </div>
+
+                    <input type="submit" class="btn-sumbit btn btn-lg btn-info" />
+
+
+                 </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
         </div>
         <!--                <div class="modal-footer">-->
         <!--                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
@@ -385,7 +498,7 @@
 <!-- Volunteers Section -->
 
 <section id="volunteers" class="volunteers text-center">
-  <div class="section-padding">
+  <div style="padding-top: 20px" class="section-padding">
     <div class="container">
       <div class="section-top">
         <h2 class="section-title">Our Team</h2><!-- /.section-title -->
@@ -675,12 +788,17 @@
 
 
 
-        </div><!-- /.volunteer-volunteers -->
+        </div>
+        <!-- /.volunteer-volunteers -->
 
-      </div><!-- /.section-details -->
-    </div><!-- /.container -->
-  </div><!-- /.section-padding -->
-</section><!-- /#volunteer -->
+      </div>
+      <!-- /.section-details -->
+    </div>
+    <!-- /.container -->
+  </div>
+  <!-- /.section-padding -->
+</section>
+<!-- /#volunteer -->
 
 <!-- Volunteers Section -->
 
@@ -711,8 +829,10 @@
 <!--</div>-->
 <!--</div>-->
 <!--</div>-->
-<!--</div>&lt;!&ndash; /.featured-items &ndash;&gt;-->
-<!--</section>&lt;!&ndash; /#featured &ndash;&gt;-->
+<!--</div>
+<!--featured-items -->
+<!--<!--</section>
+featured -->
 
 <!--Featured Section-->
 
@@ -725,9 +845,7 @@
       <div class="row">
         <div class="section-top">
           <h2 class="section-title">Whats make PYWA</h2>
-          <p class="section-description">
-
-          </p>
+<!--          <p class="section-description"></p>-->
         </div>
         <!-- /.section-top -->
         <div class="section-border">
@@ -740,7 +858,7 @@
 
     <div class="section-details">
       <div class="help-details">
-        <div class="col-md-4 col-sm-6 item">
+        <div class="col-md-4 col-sm-4 item">
           <div class="item-inner">
             <div class="item-icon">
               <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
@@ -757,7 +875,7 @@
           </div><!-- /.item-inner -->
         </div>
 
-        <div class="col-md-4 col-sm-6 item">
+        <div class="col-md-4 col-sm-4 item">
           <div class="item-inner">
             <div class="item-icon">
               <i class="fa fa-trophy" aria-hidden="true"></i>
@@ -785,28 +903,33 @@
           </div><!-- /.item-inner -->
         </div>
 
-        <div class="col-md-4 col-sm-6 item">
+        <div class="col-md-4 col-sm-4 item">
           <div class="item-inner">
             <div class="item-icon">
               <i class="icon fa fa-globe"></i>
-            </div><!-- /.item-icon -->
-            <h4 class="item-title">Our Story</h4><!-- /.item-title -->
+            </div>
+            <!-- /.item-icon -->
+            <h4 class="item-title">Our Story</h4>
+            <!-- /.item-title -->
             <p class="item-description">
               PYWA emerged through broad national and sub-national multi-stakeholder consultative processes on the importance of the recognition of youth work as a distinct profession. A preliminary national consultation held in 2011 brought together all interested parties to discuss youth work, and to discuss strategies for enhancing its recognition. Since then, an interim Association committee organized four inter-provincial consultations across the country. All national and sub-national consultations were attended by the National Youth Services Council, Inter-governmental agencies, non-governmental agencies, voluntary organizations and youth development well-wishers.  The Commonwealth Secretariat, the then Ministry of Youth Affairs and Skills Development, and the Open University of Sri Lanka, which delivers the Commonwealth Diploma in Youth Development Work were critical partners in this process.
               PYWA is now a company-registered professional body with a representative committee and growing membership drawn from all sectors delivering with, and for, young people. PYWA is also a member of the Commonwealth Alliance of Youth Workers’ Associations (CAYWA), a registered international body representing youth workers’ associations and their interests within and outside the Commonwealth.
-            </p><!-- /.item-description -->
-            <!--                    <div class="btn-container">-->
-            <!--                      <a href="#" class="btn btn-xsm">Help Now</a>-->
-            <!--                    </div>
+            </p>
+            <!-- /.item-description -->
+            <!--  <div class="btn-container">-->
+            <!--    <a href="#" class="btn btn-xsm">Help Now</a>-->
+            <!--  </div>
             <!-- /.btn-container -->
-          </div><!-- /.item-inner -->
+          </div>
+          <!-- /.item-inner -->
         </div>
 
 
-
       </div>
-    </div><!-- /.section-details -->
-  </div><!-- /.section-padding -->
+    </div>
+    <!-- /.section-details -->
+  </div>
+  <!-- /.section-padding -->
 </section><!-- /#help -->
 <!-- Our Partners -->
 
@@ -814,21 +937,44 @@
   <div class="parallax-style">
     <div class="section-padding">
       <div class="container">
-        <h4 class="section-sub-title">Our Partners</h4><!-- /.section-sub-title -->
-        <!--<p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>&lt;!&ndash; /.description &ndash;&gt;-->
+        <h4 class="section-sub-title">Our Partners</h4>
+        <!-- /.section-sub-title -->
+        <!--<p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
+        <!-- description -->
         <!--<div class="section-details">-->
         <div id="logo-list" class="logo-list owl-carousel owl-theme">
-          <div style="margin: 14px;" class="item"><a href="http://thecommonwealth.org/youth-work" target="_blank"><img src="images/partners/common-welth.jpg" alt="Partners Logo">
-              <div class="row parnerhead"><h4>The Commonwealth  Youth Work</h4></a></div></div>
-        <div style="margin: 14px;"  class="item"><a href="http://www.nysc.lk/" target="_blank"><img src="images/partners/nysc-logo.jpg" alt="Partners Logo">
-            <div class="row parnerhead"><h4>National Youth Services Council</h4></a></div></div>
-      <div style="margin: 14px;" class="item"><a href="http://commutiny.in/" target="_blank"><img src="images/partners/commutiny-the-youth-collective.jpg" alt="Partners Logo">
-          <div class="row parnerhead"><h4>Commutiny</h4></a></div></div>
-    <div style="margin: 14px;" class="item"><a href="http://commutiny.in/cyc-forum/pravah/" target="_blank"><img src="images/partners/pravah.jpg" alt="Partners Logo">
-        <div class="row parnerhead"><h4>PRAVAH</h4></a></div></div>
-  <div style="margin: 14px;" class="item"><a href="https://www.ywa.org.au/commonwealth-alliance-of-ywa"><img src="images/partners/caywa.jpg" alt="Partners Logo">
-      <div class="row parnerhead"><h4> The Commonwealth Alliance of Youth Worker
-          Associations</h4></a></div></div>
+          <div style="margin: 14px;" class="item">
+              <a href="http://thecommonwealth.org/youth-work" target="_blank">
+                <img src="images/partners/common-welth.jpg" alt="Partners Logo">
+              <div class="row parnerhead"><h4>The Commonwealth Youth Work</h4></div>
+              </a>
+
+        </div>
+        <div style="margin: 14px;" class="item"><a href="http://www.nysc.lk/" target="_blank"><img
+                src="images/partners/nysc-logo.jpg" alt="Partners Logo">
+            <div class="row parnerhead"><h4>National Youth Services Council</h4></div>
+          </a>
+
+      </div>
+      <div style="margin: 14px;" class="item">
+        <a href="http://commutiny.in/" target="_blank"><img src="images/partners/commutiny-the-youth-collective.jpg" alt="Partners Logo">
+          <div class="row parnerhead"><h4>Commutiny</h4></div>
+        </a>
+
+    </div>
+    <div style="margin: 14px;" class="item"><a href="http://commutiny.in/cyc-forum/pravah/" target="_blank">
+        <img src="images/partners/pravah.jpg" alt="Partners Logo">
+        <div class="row parnerhead"><h4>PRAVAH</h4></div>
+      </a>
+
+  </div>
+  <div style="margin: 14px;" class="item">
+    <a href="https://www.ywa.org.au/commonwealth-alliance-of-ywa">
+      <img src="images/partners/caywa.jpg" alt="Partners Logo">
+      <div class="row parnerhead"><h4> The Commonwealth Alliance of Youth Worker Associations</h4></div>
+    </a>
+
+  </div>
   <!--<div class="item"><a href="#"><img src="images/partners/1.png" alt="Partners Logo"></a></div>-->
   <!--<div class="item"><a href="#"><img src="images/partners/2.png" alt="Partners Logo"></a></div>-->
   <!--<div class="item"><a href="#"><img src="images/partners/3.png" alt="Partners Logo"></a></div>-->
@@ -838,7 +984,7 @@
   </div><!-- /.section-details -->
   </div><!-- /.container -->
   </div><!-- /.section-padding -->
-  </div><!-- /.parallax-style -->
+ <!-- /.parallax-style -->
 </section><!-- /#partners -->
 
 <!-- Our Partners -->
@@ -857,8 +1003,10 @@
             <div class="embed-responsive embed-responsive-16by9 vimeo-player">
               <iframe width="560" height="315" src="https://www.youtube.com/embed/mHLTb6tG4ys" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
-          </div><!-- /.video-container -->
-        </div><!-- /.stories-thumbnail -->
+          </div>
+          <!-- /.video-container -->
+        </div>
+        <!-- /.stories-thumbnail -->
       </div>
 
       <div class="col-md-6">
@@ -868,7 +1016,8 @@
           <!--<div class="btn-container">-->
           <!--<a href="#" class="btn btn-sm more-btn">Learn More</a>-->
           <!--<a href="#" class="btn btn-sm donate-btn">Donate Now</a>-->
-          <!--</div>&lt;!&ndash; /.btn-container &ndash;&gt;-->
+          <!--</div>
+<!--          btn-container -->
         </div><!-- /.section-padding -->
       </div>
     </div><!-- /.stories-details -->
@@ -898,84 +1047,7 @@
       <!--                  <span></span>-->
       <!--                </div><!-- /.border-style -->
       <!--              </div><!-- /.section-border -->
-      <style>
-        .frame {
-          margin-left: 33%;
-          width: 382px;
-          height: 587px;
-          background-size: 100% 100%;
-          background-repeat: no-repeat;
-          background-image: url(images/ipadframe.png )
-        }
 
-        .frame iframe {
-          position: relative;
-          top: 50px;
-          left: 0px;
-          width: 389px!important;
-          height: 484px!important;
-          left: 1px;
-        }
-
-
-        @media only screen
-        and (min-device-width: 768px)
-        and (max-device-width: 1024px)
-        and (-webkit-min-device-pixel-ratio: 1) {
-          .frame iframe {
-            position: relative;
-            top: 50px;
-            left: 0px;
-            width: 384px!important;
-            height: 467px!important;
-            left: 1px;
-          }
-          .frame {
-            width: 388px;
-            height: 565px;
-            margin-left: 170px!important;}
-
-        }
-
-
-        @media only screen
-        and (min-device-width: 320px)
-        and (max-device-width: 568px)
-        and (-webkit-min-device-pixel-ratio: 2) {
-          .frame iframe {
-            position: relative;
-            top: 40px;
-            left: 0px;
-            width: 288px !important;
-            height: 412px !important;
-            padding-left: 16px;
-          }
-          .frame {
-            width: 304px;
-            height: 491px;
-            margin-left:0%;
-          }
-
-        }
-        @media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3){
-          .frame iframe {
-            position: relative;
-            top: 40px;
-            left: 0px;
-            width: 293px !important;
-            height: 409px !important;
-            padding-left: 16px;
-          }
-          .frame {
-            width: 327px;
-            height: 491px;
-            margin-left: 1%;
-
-          }
-        }
-
-
-      </style>
       <div align="center" class="frame">
 
         <div class="fb-page" data-href="https://www.facebook.com/Professional-Youth-Workers-Association-914539538592611/" data-tabs="timeline,messages"  data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/NMleos/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Professional-Youth-Workers-Association-914539538592611/">Professional Youth works Association</a></blockquote></div>
@@ -998,21 +1070,30 @@
       <!--<div class="reach">Raised <span class="currency">$</span><span class="amount">12,60,000</span></div>-->
       <!--<div class="complete">60%</div>-->
       <!--</div>-->
-      <!--</div>&lt;!&ndash; /.progress-bar &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.progress &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item-progress &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item-image &ndash;&gt;-->
+      <!--</div>
+<!--      progress-bar -->
+      <!--</div>
+<!--      progress -->
+      <!--</div>
+<!--      item-progress -->
+      <!--</div>
+<!--      item-image -->
       <!--<div class="item-content">-->
-      <!--<h4 class="item-title">Education For All</h4>&lt;!&ndash; /.item-title &ndash;&gt;-->
+      <!--<h4 class="item-title">Education For All</h4>
+<!--      item-title -->
       <!--<div class="target">Goal: <span class="currency">$</span><span class="amount">12,60,000</span></div>-->
       <!--<p class="item-description">-->
       <!--Milo dwelleth, very rich both in money and substance, but his great avarice and insatiable covetousnes of the maid I came and saluted him-->
-      <!--</p>&lt;!&ndash; /.item-description &ndash;&gt;-->
+      <!--</p>
+<!--      item-description -->
       <!--<div class="btn-container">-->
       <!--<button class="btn btn-xsm donate-btn">Donate</button>-->
-      <!--</div>&lt;!&ndash; /.btn-container &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item-content &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item &ndash;&gt;-->
+      <!--</div>
+<!--      btn-container -->
+      <!--</div>
+<!--      item-content -->
+      <!--</div>
+<!--      item -->
       <!--<div class="item">-->
       <!--<div class="item-image">-->
       <!--<img src="images/causes/2.jpg" alt="Image">-->
@@ -1023,21 +1104,30 @@
       <!--<div class="reach">Raised <span class="currency">$</span><span class="amount">12,60,000</span></div>-->
       <!--<div class="complete">70%</div>-->
       <!--</div>-->
-      <!--</div>&lt;!&ndash; /.progress-bar &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.progress &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item-progress &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item-image &ndash;&gt;-->
+      <!--</div>
+<!--      progress-bar -->
+      <!--</div>
+<!--      progress -->
+      <!--</div>
+<!--      item-progress -->
+      <!--</div>
+<!--      item-image -->
       <!--<div class="item-content">-->
-      <!--<h4 class="item-title">Fight For The Right Cause</h4>&lt;!&ndash; /.item-title &ndash;&gt;-->
+      <!--<h4 class="item-title">Fight For The Right Cause</h4>
+<!--      item-title -->
       <!--<div class="target">Goal: <span class="currency">$</span><span class="amount">21000000</span></div>-->
       <!--<p class="item-description">-->
       <!--Dwelleth in a small house, counting his money and hath a wife that is a companion of extreame misery master desireth to alight and come you in.-->
-      <!--</p>&lt;!&ndash; /.item-description &ndash;&gt;-->
+      <!--</p>
+<!--      item-description -->
       <!--<div class="btn-container">-->
       <!--<button class="btn btn-xsm donate-btn">Donate</button>-->
-      <!--</div>&lt;!&ndash; /.btn-container &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item-content &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item &ndash;&gt;-->
+      <!--</div>
+<!--      btn-container -->
+      <!--</div>
+<!--      item-content -->
+      <!--</div>
+<!--      item -->
       <!--<div class="item">-->
       <!--<div class="item-image">-->
       <!--<img src="images/causes/3.jpg" alt="Image">-->
@@ -1048,21 +1138,30 @@
       <!--<div class="reach">Raised <span class="currency">$</span><span class="amount">12,60,000</span></div>-->
       <!--<div class="complete">80%</div>-->
       <!--</div>-->
-      <!--</div>&lt;!&ndash; /.progress-bar &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.progress &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item-progress &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item-image &ndash;&gt;-->
+      <!--</div>
+<!--      progress-bar -->
+      <!--</div>
+<!--      progress -->
+      <!--</div>
+<!--      item-progress -->
+      <!--</div>
+<!--      item-image -->
       <!--<div class="item-content">-->
-      <!--<h4 class="item-title">Safe Water For Everyone</h4>&lt;!&ndash; /.item-title &ndash;&gt;-->
+      <!--<h4 class="item-title">Safe Water For Everyone</h4>
+<!--      item-title -->
       <!--<div class="target">Goal: <span class="currency">$</span><span class="amount">21000000</span></div>-->
       <!--<p class="item-description">-->
       <!--Then a maid come and said, Ho sirrah that knocks so fast, in what kind of sort will you borrow money? Know you not that we use to take no gag-->
-      <!--</p>&lt;!&ndash; /.item-description &ndash;&gt;-->
+      <!--</p>
+<!--      item-description -->
       <!--<div class="btn-container">-->
       <!--<button class="btn btn-xsm donate-btn">Donate</button>-->
-      <!--</div>&lt;!&ndash; /.btn-container &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item-content &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item &ndash;&gt;-->
+      <!--</div>
+<!--      btn-container -->
+      <!--</div>
+<!--      item-content -->
+      <!--</div>
+<!--      item -->
       <!--<div class="item">-->
       <!--<div class="item-image">-->
       <!--<img src="images/causes/4.jpg" alt="Image">-->
@@ -1073,21 +1172,30 @@
       <!--<div class="reach">Raised <span class="currency">$</span><span class="amount">12,60,000</span></div>-->
       <!--<div class="complete">65%</div>-->
       <!--</div>-->
-      <!--</div>&lt;!&ndash; /.progress-bar &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.progress &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item-progress &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item-image &ndash;&gt;-->
+      <!--</div>
+<!--      progress-bar -->
+      <!--</div>
+<!--      progress -->
+      <!--</div>
+<!--      item-progress -->
+      <!--</div>
+<!--      item-image -->
       <!--<div class="item-content">-->
-      <!--<h4 class="item-title">Support For Old Men</h4>&lt;!&ndash; /.item-title &ndash;&gt;-->
+      <!--<h4 class="item-title">Support For Old Men</h4>
+<!--      item-title -->
       <!--<div class="target">Goal: <span class="currency">$</span><span class="amount">21000000</span></div>-->
       <!--<p class="item-description">-->
       <!--The Maid said I pray you tarry here till I tell him so, and therewithall she closed fast the door and went in, after a while she returned againe-->
-      <!--</p>&lt;!&ndash; /.item-description &ndash;&gt;-->
+      <!--</p>
+<!--      item-description -->
       <!--<div class="btn-container">-->
       <!--<button class="btn btn-xsm donate-btn">Donate</button>-->
-      <!--</div>&lt;!&ndash; /.btn-container &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item-content &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item &ndash;&gt;-->
+      <!--</div>
+<!--      btn-container -->
+      <!--</div>
+<!--      item-content -->
+      <!--</div>
+<!--      item -->
       <!--<div class="item">-->
       <!--<div class="item-image">-->
       <!--<img src="images/causes/5.jpg" alt="Image">-->
@@ -1098,21 +1206,30 @@
       <!--<div class="reach">Raised <span class="currency">$</span><span class="amount">12,60,000</span></div>-->
       <!--<div class="complete">85%</div>-->
       <!--</div>-->
-      <!--</div>&lt;!&ndash; /.progress-bar &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.progress &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item-progress &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item-image &ndash;&gt;-->
+      <!--</div>
+<!--      progress-bar -->
+      <!--</div>
+<!--      progress -->
+      <!--</div>
+<!--      item-progress -->
+      <!--</div>
+<!--      item-image -->
       <!--<div class="item-content">-->
-      <!--<h4 class="item-title">Homeless Project</h4>&lt;!&ndash; /.item-title &ndash;&gt;-->
+      <!--<h4 class="item-title">Homeless Project</h4>
+<!--      item-title -->
       <!--<div class="target">Goal: <span class="currency">$</span><span class="amount">21000000</span></div>-->
       <!--<p class="item-description">-->
       <!--And so I did, where as I found him sitting upon a little bed, going to supper, and his wife sat at his feet, but there was no  table and so by appointment-->
-      <!--</p>&lt;!&ndash; /.item-description &ndash;&gt;-->
+      <!--</p>
+<!--      item-description -->
       <!--<div class="btn-container">-->
       <!--<button class="btn btn-xsm donate-btn">Donate</button>-->
-      <!--</div>&lt;!&ndash; /.btn-container &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item-content &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item &ndash;&gt;-->
+      <!--</div>
+<!--      btn-container -->
+      <!--</div>
+<!--      item-content -->
+      <!--</div>
+<!--      item -->
       <!--<div class="item">-->
       <!--<div class="item-image">-->
       <!--<img src="images/causes/6.jpg" alt="Image">-->
@@ -1123,23 +1240,34 @@
       <!--<div class="reach">Raised <span class="currency">$</span><span class="amount">12,60,000</span></div>-->
       <!--<div class="complete">70%</div>-->
       <!--</div>-->
-      <!--</div>&lt;!&ndash; /.progress-bar &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.progress &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item-progress &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item-image &ndash;&gt;-->
+      <!--</div>
+<!--      progress-bar -->
+      <!--</div>
+<!--      progress -->
+      <!--</div>
+<!--      item-progress -->
+      <!--</div>
+<!--      item-image -->
       <!--<div class="item-content">-->
-      <!--<h4 class="item-title">Protect Childhood</h4>&lt;!&ndash; /.item-title &ndash;&gt;-->
+      <!--<h4 class="item-title">Protect Childhood</h4>
+<!--      item-title -->
       <!--<div class="target">Goal: <span class="currency">$</span><span class="amount">21000000</span></div>-->
       <!--<p class="item-description">-->
       <!--He commanded his wife to sit away and bid me sit in her place, when I refused by reason of courtesie, he pulled me by my garment and willed me sit downe-->
-      <!--</p>&lt;!&ndash; /.item-description &ndash;&gt;-->
+      <!--</p>
+<!--      item-description -->
       <!--<div class="btn-container">-->
       <!--<button class="btn btn-xsm donate-btn">Donate</button>-->
-      <!--</div>&lt;!&ndash; /.btn-container &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item-content &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.item &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /#causes-slider &ndash;&gt;-->
-      <!--</div>&lt;!&ndash; /.section-details &ndash;&gt;-->
+      <!--</div>
+<!--      btn-container -->
+      <!--</div>
+<!--      item-content -->
+      <!--</div>
+<!--      item -->
+      <!--      <!--</div>
+      causes-slider -->
+      <!--</div>
+<!--      section-details -->
     </div>
     <!-- /.container -->
   </div>
@@ -1153,7 +1281,7 @@
 
 <!-- Gallery Section -->
 
-<section style="display: none" id="gallery" class="gallery text-center">
+<section  id="gallery" class="gallery text-center">
   <div class="gallery-top" data-stellar-background-ratio="0.1" data-stellar-vertical-offset="0">
     <div class="parallax-style">
       <div class="section-padding">
@@ -1175,157 +1303,184 @@
         <div class="section-details">
           <div class="itemFilter">
             <a href="#" data-filter="" class="current">View All</a>
-            <a href="#" data-filter=".cat-1">Education</a>
-            <a href="#" data-filter=".cat-2">Health Care</a>
-            <a href="#" data-filter=".cat-3">Livelihood</a>
-            <a href="#" data-filter=".cat-4">Disaster</a>
-            <a href="#" data-filter=".cat-5">Empowering</a>
-          </div> <!-- /.galleryFilter -->
+            <a href="#" data-filter=".cat-1">Consultative workshop</a>
+            <a href="#" data-filter=".cat-2">Youth work week</a>
+            <a href="#" data-filter=".cat-3">Strategic planning workshop</a>
+            <a href="#" data-filter=".cat-4">Ocean in Drop</a>
+          </div>
+          <!-- /.galleryFilter -->
 
           <div id="gallery-items" class="gallery-items">
-            <div class="item cat-1 cat-3">
-              <a href="images/gallery/1.jpg" class="image-popup-vertical-fit">
-                <img src="images/gallery/1.jpg" alt="Item Image">
+            <style>
+              .imgrow{
+                max-height: 200px;
+
+              }
+            </style>
+            <div class="imgrow item cat-1">
+              <a href="images/gallery/consultative-workshop-held-at open-university.jpg" class="image-popup-vertical-fit">
+                <img src="images/gallery/consultative-workshop-held-at open-university.jpg" alt="Consultative workshop">
                 <div class="item-details">
-                  <h3 class="item-title">Saving Children's Project</h3>
+                  <h3 class="item-title">Consultative workshop held at Open University 2016-05-09</h3>
+                </div>
+                <!-- /.item-details -->
+              </a>
+            </div>
+            <!-- /.item -->
+
+            <div class="imgrow item cat-2">
+              <a href="images/gallery/youth-work-week-seminar.jpg" class="image-popup-vertical-fit">
+                <img src="images/gallery/youth-work-week-seminar.jpg" alt="Youth work week seminar">
+                <div class="item-details">
+                  <h3 class="item-title">Youth work week seminar on 24.11.2014</h3>
                 </div><!-- /.item-details -->
               </a>
             </div><!-- /.item -->
-            <div class="item cat-2 cat-5">
-              <a href="images/gallery/2.jpg" class="image-popup-vertical-fit">
-                <img src="images/gallery/2.jpg" alt="Item Image">
+            <div class="imgrow item cat-2">
+              <a href="images/gallery/youth-work-week.jpg" class="image-popup-vertical-fit">
+                <img src="images/gallery/youth-work-week.jpg" alt="Youth Work Week">
                 <div class="item-details">
-                  <h3 class="item-title">Children's Education Project</h3>
+                  <h3 class="item-title">Youth Work Week</h3>
                 </div><!-- /.item-details -->
               </a>
             </div><!-- /.item -->
-            <div class="item cat-4">
-              <a href="images/gallery/3.jpg" class="image-popup-vertical-fit">
-                <img src="images/gallery/3.jpg" alt="Item Image">
+            <div class="imgrow item cat-3">
+              <a href="images/gallery/strategic-planning-workshop.jpg" class="image-popup-vertical-fit">
+                <img src="images/gallery/strategic-planning-workshop.jpg" alt="Item Image">
                 <div class="item-details">
-                  <h3 class="item-title">Helping Homeless Project</h3>
+                  <h3 class="item-title">Strategic planning workshop on 4.8.2015</h3>
                 </div><!-- /.item-details -->
               </a>
             </div><!-- /.item -->
-            <div class="item cat-2 cat-3">
-              <a href="images/gallery/4.jpg" class="image-popup-vertical-fit">
-                <img src="images/gallery/4.jpg" alt="Item Image">
+            <div class="imgrow item cat-4">
+              <a href="images/gallery/ocean-drop-img1.jpg" class="image-popup-vertical-fit">
+                <img src="images/gallery/ocean-drop-img1.jpg" alt="Item Image">
                 <div class="item-details">
-                  <h3 class="item-title">Helping Disabled Project</h3>
+                  <h3 class="item-title">Building Competencies of Youth Workers’ in Sri Lanka – A residential training programme organized by the PYWA</h3>
                 </div><!-- /.item-details -->
               </a>
             </div><!-- /.item -->
-            <div class="item cat-1 cat-6">
-              <a href="images/gallery/5.jpg" class="image-popup-vertical-fit">
-                <img src="images/gallery/5.jpg" alt="Item Image">
+            <div class="imgrow item cat-4">
+              <a href="images/gallery/ocean-drop-img2.jpg" class="image-popup-vertical-fit">
+                <img src="images/gallery/ocean-drop-img2.jpg" alt="Item Image">
                 <div class="item-details">
-                  <h3 class="item-title">Shelter Home Project</h3>
+                  <h3 class="item-title">Building Competencies of Youth Workers’ in Sri Lanka – A residential training programme organized by the PYWA</h3>
                 </div><!-- /.item-details -->
               </a>
             </div><!-- /.item -->
-            <div class="item cat-1 cat-3">
-              <a href="images/gallery/6.jpg" class="image-popup-vertical-fit">
-                <img src="images/gallery/6.jpg" alt="Item Image">
+            <div class="imgrow item cat-4">
+              <a href="images/gallery/ocean-drop-img3.jpg" class="image-popup-vertical-fit">
+                <img src="images/gallery/ocean-drop-img3.jpg" alt="Item Image">
                 <div class="item-details">
-                  <h3 class="item-title">Women's Power Project</h3>
+                  <h3 class="item-title">Building Competencies of Youth Workers’ in Sri Lanka – A residential training programme organized by the PYWA</h3>
                 </div><!-- /.item-details -->
               </a>
             </div><!-- /.item -->
-            <div class="item cat-2 cat-3">
-              <a href="images/gallery/7.jpg" class="image-popup-vertical-fit">
-                <img src="images/gallery/7.jpg" alt="Item Image">
+            <div class="imgrow item cat-4">
+              <a href="images/gallery/ocean-drop-img4.jpg" class="image-popup-vertical-fit">
+                <img src="images/gallery/ocean-drop-img4.jpg" alt="Item Image">
                 <div class="item-details">
-                  <h3 class="item-title">Women's Power Project</h3>
-                </div><!-- /.item-details -->
-              </a>
-            </div><!-- /.item -->
-            <div class="item cat-4 cat-5">
-              <a href="images/gallery/8.jpg" class="image-popup-vertical-fit">
-                <img src="images/gallery/8.jpg" alt="Item Image">
-                <div class="item-details">
-                  <h3 class="item-title">Girls Education Project</h3>
-                </div><!-- /.item-details -->
+                  <h3 class="item-title">Building Competencies of Youth Workers’ in Sri Lanka – A residential training programme organized by the PYWA</h3>
+                </div>
+                <!-- /.item-details -->
               </a>
             </div>
-            <div class="item cat-4 cat-5">
-              <a href="images/gallery/8.jpg" class="image-popup-vertical-fit">
-                <img src="images/gallery/8.jpg" alt="Item Image">
-                <div class="item-details">
-                  <h3 class="item-title">Girls Education Project</h3>
-                </div><!-- /.item-details -->
+                        <div class="imgrow item">
+                          <a href="images/gallery/image17.jpg" class="image-popup-vertical-fit">
+                            <img src="images/gallery/image17.jpg" alt="image17">
+<!--                            <div class="item-details">-->
+<!--                              <h3 class="item-title">Girls Education Project</h3>-->
+<!--                            </div>-->
+            <!-- /.item-details -->
               </a>
             </div>
-            <div class="item cat-4 cat-5">
-              <a href="images/gallery/8.jpg" class="image-popup-vertical-fit">
-                <img src="images/gallery/8.jpg" alt="Item Image">
-                <div class="item-details">
-                  <h3 class="item-title">Girls Education Project</h3>
-                </div><!-- /.item-details -->
-              </a>
-            </div>
-            <div class="item cat-4 cat-5">
-              <a href="images/gallery/8.jpg" class="image-popup-vertical-fit">
-                <img src="images/gallery/8.jpg" alt="Item Image">
-                <div class="item-details">
-                  <h3 class="item-title">Girls Education Project</h3>
-                </div><!-- /.item-details -->
-              </a>
-            </div>
-            <div class="item cat-4 cat-5">
-              <a href="images/gallery/8.jpg" class="image-popup-vertical-fit">
-                <img src="images/gallery/8.jpg" alt="Item Image">
-                <div class="item-details">
-                  <h3 class="item-title">Girls Education Project</h3>
-                </div><!-- /.item-details -->
-              </a>
-            </div>
-            <div class="item cat-4 cat-5">
-              <a href="images/gallery/8.jpg" class="image-popup-vertical-fit">
-                <img src="images/gallery/8.jpg" alt="Item Image">
-                <div class="item-details">
-                  <h3 class="item-title">Girls Education Project</h3>
-                </div><!-- /.item-details -->
-              </a>
-            </div>
-            <div class="item cat-4 cat-5">
-              <a href="images/gallery/8.jpg" class="image-popup-vertical-fit">
-                <img src="images/gallery/8.jpg" alt="Item Image">
-                <div class="item-details">
-                  <h3 class="item-title">Girls Education Project</h3>
-                </div><!-- /.item-details -->
-              </a>
-            </div>
-            <div class="item cat-4 cat-5">
-              <a href="images/gallery/8.jpg" class="image-popup-vertical-fit">
-                <img src="images/gallery/8.jpg" alt="Item Image">
-                <div class="item-details">
-                  <h3 class="item-title">Girls Education Project</h3>
-                </div><!-- /.item-details -->
-              </a>
-            </div>
-            <div class="item cat-4 cat-5">
-              <a href="images/gallery/8.jpg" class="image-popup-vertical-fit">
-                <img src="images/gallery/8.jpg" alt="Item Image">
-                <div class="item-details">
-                  <h3 class="item-title">Girls Education Project</h3>
-                </div><!-- /.item-details -->
-              </a>
-            </div>n<!-- /.item -->
-          </div><!-- /#gallery-items -->
-        </div><!-- /.section-details -->
-      </div><!-- /.section-padding -->
-    </div><!-- /.parallax-style -->
-  </div><!-- /.gallery-top -->
 
 
-</section><!-- /#gallery -->
+<!--            <div class="item cat-4 cat-5">-->
+<!--              <a href="images/gallery/8.jpg" class="image-popup-vertical-fit">-->
+<!--                <img src="images/gallery/8.jpg" alt="Item Image">-->
+<!--                <div class="item-details">-->
+<!--                  <h3 class="item-title">Girls Education Project</h3>-->
+<!--                </div>
+<!-- /.item-details -->
+<!--              </a>-->
+<!--            </div>-->
+<!--            <div class="item cat-4 cat-5">-->
+<!--              <a href="images/gallery/8.jpg" class="image-popup-vertical-fit">-->
+<!--                <img src="images/gallery/8.jpg" alt="Item Image">-->
+<!--                <div class="item-details">-->
+<!--                  <h3 class="item-title">Girls Education Project</h3>-->
+<!--                </div>-->
+<!--                <!-- /.item-details -->
+<!--              </a>-->
+<!--            </div>-->
+<!--            <div class="item cat-4 cat-5">-->
+<!--              <a href="images/gallery/8.jpg" class="image-popup-vertical-fit">-->
+<!--                <img src="images/gallery/8.jpg" alt="Item Image">-->
+<!--                <div class="item-details">-->
+<!--                  <h3 class="item-title">Girls Education Project</h3>-->
+<!--                </div>
+<!-- /.item-details -->
+<!--              </a>-->
+<!--            </div>-->
+<!--            <div class="item cat-4 cat-5">-->
+<!--              <a href="images/gallery/8.jpg" class="image-popup-vertical-fit">-->
+<!--                <img src="images/gallery/8.jpg" alt="Item Image">-->
+<!--                <div class="item-details">-->
+<!--                  <h3 class="item-title">Girls Education Project</h3>-->
+<!--                </div>
+<!-- /.item-details -->
+<!--              </a>-->
+<!--            </div>-->
+<!--            <div class="item cat-4 cat-5">-->
+<!--              <a href="images/gallery/8.jpg" class="image-popup-vertical-fit">-->
+<!--                <img src="images/gallery/8.jpg" alt="Item Image">-->
+<!--                <div class="item-details">-->
+<!--                  <h3 class="item-title">Girls Education Project</h3>-->
+<!--                </div>
+<!-- /.item-details -->
+<!--              </a>-->
+<!--            </div>-->
+<!--            <div class="item cat-4 cat-5">-->
+<!--              <a href="images/gallery/8.jpg" class="image-popup-vertical-fit">-->
+<!--                <img src="images/gallery/8.jpg" alt="Item Image">-->
+<!--                <div class="item-details">-->
+<!--                  <h3 class="item-title">Girls Education Project</h3>-->
+<!--                </div>
+<!-- /.item-details -->
+<!--              </a>-->
+<!--            </div>-->
+<!--            <div class="item cat-4 cat-5">-->
+<!--              <a href="images/gallery/8.jpg" class="image-popup-vertical-fit">-->
+<!--                <img src="images/gallery/8.jpg" alt="Item Image">-->
+<!--                <div class="item-details">-->
+<!--                  <h3 class="item-title">Girls Education Project</h3>-->
+<!--                </div>
+<!-- /.item-details -->
+<!--              </a>-->
+<!--            </div>-->
+            <!-- /.item -->
+          </div>
+          <!-- /#gallery-items -->
+        </div>
+        <!-- /.section-details -->
+      </div>
+      <!-- /.section-padding -->
+    </div>
+    <!-- /.parallax-style -->
+  </div>
+  <!-- /.gallery-top -->
+
+
+</section>
+<!-- /#gallery -->
 
 <!--end of  Gallery Section -->
 
 
 <!-- Events Section -->
 
-<section id="events" style="display: none" class="events">
+<section id="events"  class="events">
   <div class="section-padding">
     <div class="container">
 
@@ -1802,9 +1957,9 @@
                           <div class="time-box-inner dash days_dash">
                             <span class="time-name">Days</span>
                                     <span class="time-number">
-                                      <span class="digit">0</span>
-                                      <span class="digit">0</span>
-                                      <span class="digit">0</span>
+                                      <span class="digit">10</span>
+                                      <span class="digit">2</span>
+                                      <span class="digit">2</span>
                                     </span><!-- /.time-number -->
                           </div><!-- /.time-box-inner -->
                         </div><!-- /.time-box -->
@@ -1812,9 +1967,9 @@
                           <div class="time-box-inner dash hours_dash">
                             <span class="time-name">Hours</span>
                                     <span class="time-number">
-                                      <span class="digit">0</span>
-                                      <span class="digit">0</span>
-                                      <span class="digit">0</span>
+                                      <span class="digit">5</span>
+                                      <span class="digit">6</span>
+                                      <span class="digit">3</span>
                                     </span><!-- /.time-number -->
                           </div><!-- /.time-box-inner -->
                         </div><!-- /.time-box -->
@@ -1869,19 +2024,23 @@
 
 <!--blog Section-->
 
-<section id="blog" style="display: none" class="blog">
+<section id="blog"  class="blog">
   <div class="section-padding">
     <div class="container">
       <div class="section-top text-center">
         <h2 class="section-title">Latest News</h2>
         <p class="section-description">Read more details about our work. We work for make a happy world. We know, we can not remove poverty from the world but believe that we can decrease poverty.</p>
-      </div>&lt;!&ndash; /.section-top &ndash;&gt;
+      </div>
+
+<!--section-top -->
 
       <div class="section-border">
         <div class="border-style">
           <span></span>
-        </div>&lt;!&ndash; /.border-style &ndash;&gt;
-      </div>&lt;!&ndash; /.section-border &ndash;&gt;
+        </div>
+<!--        border-style -->
+      </div>
+<!--      section-border -->
 
       <div class="section-details">
         <div class="blog-post">
@@ -1891,54 +2050,70 @@
                 <div class="post-top">
                   <div class="post-thumbnail">
                     <img src="images/post/1.jpg" alt="Post Image">
-                  </div>&lt;!&ndash; /.post-thumbnail &ndash;&gt;
-                  <div class="post-date media">
+                  </div>
+                  <!-- post-thumbnail -->
+                   <div class="post-date media">
                     <time datetime="2015-06-25"><span class="date media-left">15</span> <span class="media-body">June 2015</span></time>
-                  </div>&lt;!&ndash; /.post-date &ndash;&gt;
-                </div>&lt;!&ndash; /.post-top &ndash;&gt;
+                  </div>
+                  <!-- post-date -->
+                </div>
+                <!-- post-top -->
               </div>
 
               <div class="col-md-6">
                 <div class="post-content">
                   <h3 class="entry-title">
                     <a href="single.html">Magic in the house as well as in the fields</a>
-                  </h3>&lt;!&ndash; /.entry-title &ndash;&gt;
+                  </h3>
+<!--                  entry-title -->
                   <p class="entry-content">
                     Statues, Images and Walls and the Oxen and other brute beasts could speake and tell strange newes and they see and hear some Oracles.
-                  </p>&lt;!&ndash; /.entry-content &ndash;&gt;
+                  </p>
+<!--                  entry-content -->
                   <div class="btn-container">
                     <a href="#" class="btn btn-xsm">Read More</a>
-                  </div>&lt;!&ndash; /.btn-container &ndash;&gt;
-                </div>&lt;!&ndash; /.post-content &ndash;&gt;
+                  </div>
+<!--                  btn-container -->
+                </div>
+<!--                post-content -->
               </div>
-            </article>&lt;!&ndash; /.type-post &ndash;&gt;
+            </article>
+<!--            type-post -->
 
             <article class="post type-post">
               <div class="col-md-6">
                 <div class="post-content">
                   <h3 class="entry-title">
                     <a href="single.html">The position of Livius is not always clearly</a>
-                  </h3>&lt;!&ndash; /.entry-title &ndash;&gt;
+                  </h3>
+<!--                  entry-title -->
                   <p class="entry-content">
                     Being astonied or rather dismayed and vexed with desire, knowing no certain place I intended to go, where as I espied a certaine woman
-                  </p>&lt;!&ndash; /.entry-content &ndash;&gt;
+                  </p>
+<!--                  entry-content -->
                   <div class="btn-container">
                     <a href="#" class="btn btn-xsm">Read More</a>
-                  </div>&lt;!&ndash; /.btn-container &ndash;&gt;
-                </div>&lt;!&ndash; /.post-content &ndash;&gt;
+                  </div>
+<!--                  btn-container -->
+                </div>
+<!--                post-content -->
               </div>
 
               <div class="col-md-6">
                 <div class="post-top">
                   <div class="post-thumbnail">
                     <img src="images/post/2.jpg" alt="Post Image">
-                  </div>&lt;!&ndash; /.post-thumbnail &ndash;&gt;
+                  </div>
+<!--                  post-thumbnail -->
                   <div class="post-date media">
                     <time datetime="2015-06-25"><span class="date media-left">20</span> <span class="media-body">June 2015</span></time>
-                  </div>&lt;!&ndash; /.post-date &ndash;&gt;
-                </div>&lt;!&ndash; /.post-top &ndash;&gt;
+                  </div>
+<!--                  post-date -->
+                </div>
+<!--                post-top -->
               </div>
-            </article>&lt;!&ndash; /.type-post &ndash;&gt;
+            </article>
+<!--            type-post -->
           </div>
 
           <div class="col-md-4">
@@ -1947,36 +2122,163 @@
                 <div class="post-top">
                   <div class="post-thumbnail">
                     <img src="images/post/3.jpg" alt="Post Image">
-                  </div>&lt;!&ndash; /.post-thumbnail &ndash;&gt;
+                  </div>
+<!--                  post-thumbnail -->
                   <div class="post-date media">
                     <time datetime="2015-06-25"><span class="date media-left">25</span> <span class="media-body">June 2015</span></time>
-                  </div>&lt;!&ndash; /.post-date &ndash;&gt;
-                </div>&lt;!&ndash; /.post-top &ndash;&gt;
+                  </div>
+<!--                  post-date -->
+                </div>
+<!--                post-top -->
               </div>
 
               <div class="col-md-6">
                 <div class="post-content">
                   <h3 class="entry-title">
                     <a href="single.html">Latin poetry begins with the rude ceremonial</a>
-                  </h3>&lt;!&ndash; /.entry-title &ndash;&gt;
+                  </h3>
+<!--                  entry-title -->
                   <p class="entry-content">
                     There was an old man followed her, who as soon as he espied me, said to himself and he came embraced me and went into mistresse house
-                  </p>&lt;!&ndash; /.entry-content &ndash;&gt;
+                  </p>
+<!--                  entry-content -->
                   <div class="btn-container">
                     <a href="#" class="btn btn-xsm">Read More</a>
-                  </div>&lt;!&ndash; /.btn-container &ndash;&gt;
-                </div>&lt;!&ndash; /.post-content &ndash;&gt;
+                  </div>
+<!--                  btn-container -->
+                </div>
+<!--                post-content -->
               </div>
-            </article>&lt;!&ndash; /.type-post &ndash;&gt;
+            </article>
+<!--            type-post -->
           </div>
-        </div>&lt;!&ndash; /.blog-post &ndash;&gt;
-      </div>&lt;!&ndash; /.section-details &ndash;&gt;
 
-      <div class="btn-container text-center">
-        <a href="blog.html" class="btn btn-sm">View All</a>
-      </div>&lt;!&ndash; /.btn-container &ndash;&gt;
-    </div>&lt;!&ndash; /.container &ndash;&gt;
-  </div>&lt;!&ndash; /.section-padding &ndash;&gt;
+
+
+          <div class="col-md-8">
+            <article class="post type-post">
+              <div class="col-md-6">
+                <div class="post-top">
+                  <div class="post-thumbnail">
+                    <img src="images/post/1.jpg" alt="Post Image">
+                  </div>
+<!--                  post-thumbnail -->
+                  <div class="post-date media">
+                    <time datetime="2015-06-25"><span class="date media-left">15</span> <span class="media-body">June 2015</span></time>
+                  </div>
+<!--                  post-date -->
+                </div>
+<!--                post-top -->
+              </div>
+
+              <div class="col-md-6">
+                <div class="post-content">
+                  <h3 class="entry-title">
+                    <a href="single.html">Magic in the house as well as in the fields</a>
+                  </h3>
+<!--                  entry-title -->
+                  <p class="entry-content">
+                    Statues, Images and Walls and the Oxen and other brute beasts could speake and tell strange newes and they see and hear some Oracles.
+                  </p>
+<!--                  entry-content -->
+                  <div class="btn-container">
+                    <a href="#" class="btn btn-xsm">Read More</a>
+                  </div>
+<!--                  btn-container -->
+                </div>
+<!--                post-content -->
+              </div>
+            </article>
+<!--            type-post -->
+
+            <article class="post type-post">
+              <div class="col-md-6">
+                <div class="post-content">
+                  <h3 class="entry-title">
+                    <a href="single.html">The position of Livius is not always clearly</a>
+                  </h3>
+<!--                  entry-title -->
+                  <p class="entry-content">
+                    Being astonied or rather dismayed and vexed with desire, knowing no certain place I intended to go, where as I espied a certaine woman
+                  </p>
+<!--                  entry-content -->
+                  <div class="btn-container">
+                    <a href="#" class="btn btn-xsm">Read More</a>
+                  </div>
+<!--                  btn-container -->
+                </div>
+<!--                post-content -->
+              </div>
+
+              <div class="col-md-6">
+                <div class="post-top">
+                  <div class="post-thumbnail">
+                    <img src="images/post/2.jpg" alt="Post Image">
+                  </div>
+<!--                  post-thumbnail -->
+                  <div class="post-date media">
+                    <time datetime="2015-06-25"><span class="date media-left">20</span> <span class="media-body">June 2015</span></time>
+                  </div>
+<!--                  post-date -->
+                </div>
+<!--                post-top -->
+              </div>
+            </article>
+<!--            type-post -->
+          </div>
+
+          <div class="col-md-4">
+            <article class="post type-post">
+              <div class="col-md-6">
+                <div class="post-top">
+                  <div class="post-thumbnail">
+                    <img src="images/post/3.jpg" alt="Post Image">
+                  </div>
+<!--                  post-thumbnail -->
+                  <div class="post-date media">
+                    <time datetime="2015-06-25"><span class="date media-left">25</span> <span class="media-body">June 2015</span></time>
+                  </div>
+<!--                  post-date -->
+                </div>
+<!--                post-top -->
+              </div>
+
+              <div class="col-md-6">
+                <div class="post-content">
+                  <h3 class="entry-title">
+                    <a href="single.html">Latin poetry begins with the rude ceremonial</a>
+                  </h3>
+<!--                  entry-title -->
+                  <p class="entry-content">
+                    There was an old man followed her, who as soon as he espied me, said to himself and he came embraced me and went into mistresse house
+                  </p>
+<!--                  entry-content -->
+                  <div class="btn-container">
+                    <a href="#" class="btn btn-xsm">Read More</a>
+                  </div>
+<!--                  btn-container -->
+                </div>
+<!--                post-content -->
+              </div>
+            </article>
+<!--            type-post -->
+          </div>
+
+
+
+        </div>
+<!--        blog-post -->
+      </div>
+<!--      section-details -->
+
+<!--      <div class="btn-container text-center">-->
+<!--        <a href="blog.html" class="btn btn-sm">View All</a>-->
+<!--      </div>-->
+<!--      btn-container -->
+    </div>
+<!--    container -->
+  </div>
+<!--  section-padding -->
 </section>
 
 <!--blog Section-->
@@ -1985,7 +2287,7 @@
 
 <!-- Testimonial Section -->
 
-<section style="display: none" id="testimonial" class="testimonial" data-stellar-background-ratio="0.1" data-stellar-vertical-offset="0">
+<section  id="testimonial" class="testimonial" data-stellar-background-ratio="0.1" data-stellar-vertical-offset="0">
   <div class="parallax-style">
     <div class="section-padding">
       <div class="container">
@@ -2057,12 +2359,13 @@
 
 
 <!-- Contact Section -->
-
+<div id="loader" style="display: none;" class="load">
+    <img src="load.gif">
+</div>
 <section id="contact" class="contact text-center">
-  <div class="section-padding">
+    <div class="section-padding">
     <div class="container">
-
-      <div class="section-top">
+     <div class="section-top">
         <h2 class="section-title">Contact Us</h2><!-- /.section-title -->
         <p class="section-description">
           We are always ready for you. Contact with us for any type of help. We always try our best for helping people. Drop an Email or directly come to our office.
@@ -2075,29 +2378,53 @@
         </div><!-- /.border-style -->
       </div><!-- /.section-border -->
 
+
       <div class="section-details">
 
-        <form action="#" method="post" id="contactform" class="contactform">
-          <div class="contact-box-hide">
+        <form action="email.php" method="post" id="contact-form" class="contactform" role="form">
+            <div style="padding:0;" id="messages" class="messages">
+                <?php if(isset($message)&&!empty($message)){
+                    echo $message;
+                }?>
+            </div>
+            <div class="contact-box-hide">
             <div class="row">
-              <div class="col-sm-4 form-input">
+              <div class="col-sm-3 form-input">
                 <i class="form-icon fa fa-user"></i>
-                <input type="text"  class="form-control" id="name" name="name" required placeholder="Name*">
+                <input type="text"  class="form-control" id="form_name" name="firstname" required placeholder="First Name *">
+                  <div class="help-block with-errors"></div>
               </div>
-              <div class="col-sm-4 form-input">
-                <i class="form-icon fa fa-envelope"></i>
-                <input type="email" class="form-control"  id="email" name="email" required placeholder="Email Address*">
+                <div class="col-sm-3 form-input">
+                    <i class="form-icon fa fa-user"></i>
+                    <input type="text"  class="form-control" id="form_lastname" name="lastname" required placeholder="Last Name *">
+                    <div class="help-block with-errors"></div>
+                </div>
+
+
+                <div class="col-sm-3 form-input">
+                    <i class="form-icon fa fa-envelope"></i>
+                    <input type="email" class="form-control"  id="email" name="email" required placeholder="Email Address *">
+                    <div class="help-block with-errors"></div>
+                </div>
+              <div class="col-sm-3 form-input">
+                <i class="form-icon fa fa-mobile fa-lg"></i>
+                <input type="tel" class="form-control"  id="form_phone" name="contactno" required placeholder="Contact Number *">
+                  <div class="help-block with-errors"></div>
               </div>
-              <div class="col-sm-4 form-input">
-                <i class="form-icon fa fa-link"></i>
-                <input type="url" class="form-control"  id="number" name="number" required placeholder="Contact Number">
-              </div>
+
             </div>
             <div class="form-input">
-              <i class="form-icon fa fa-pencil"></i>
-              <textarea class="form-control" rows="7" id="message" name="message" required placeholder="Message*"></textarea>
+              <i class="form-icon fa fa-pencil last"></i>
+              <textarea class="form-control" rows="7" id="form_message" name="inquiry" required placeholder="Message *"></textarea>
+                <div class="help-block with-errors"></div>
             </div>
-            <button id="submit" class="btn btn-sm" type="submit" name="submit">Submit</button>
+              <div class="col-md-6 ">
+                  <div class="form-group">
+                      <div class="g-recaptcha" data-sitekey="6LcBQGIUAAAAAE75pa8LbKUZyYwbQUff3USrZVfV"></div>
+                      <span class="help-block with-errors"></span>
+                  </div>
+              </div>
+            <input id="btnsubmit" class="btn btn-sm" type="submit" name="btnsubmit" />
             <span id="contact-loading" class="btn custom-btn"> <i class="fa fa-refresh fa-spin"></i> </span>
           </div><!-- /.contact-box-hide -->
           <div class="contact-message"></div>
@@ -2126,33 +2453,35 @@
 
 <!-- Subscribe -->
 
-<section style="display: none" id="subscribe" class="subscribe" data-stellar-background-ratio="0.1" data-stellar-vertical-offset="0.4">
-  <div class="parallax-style">
-    <div class="section-padding">
-      <div class="container">
-        <div class="section-details">
-          <div class="col-md-4">
-            <h4 class="section-sub-title">Subscribe newsletter</h4>
-          </div>
-          <div class="col-md-8">
-            <form class="subscribe-form" method="post">
-              <p class="alert-success"></p>
-              <p class="alert-warning"></p>
+<!--<section  id="subscribe" class="subscribe" data-stellar-background-ratio="0.1" data-stellar-vertical-offset="0.4">-->
+<!--  <div class="parallax-style">-->
+<!--    <div class="section-padding">-->
+<!--      <div class="container">-->
+<!--        <div class="section-details">-->
+<!--          <div class="col-md-4">-->
+<!--            <h4 class="section-sub-title">Subscribe newsletter</h4>-->
+<!--          </div>-->
+<!--          <div class="col-md-8">-->
+<!--            <form class="subscribe-form" method="post">-->
+<!--              <p class="alert-success"></p>-->
+<!--              <p class="alert-warning"></p>-->
+<!---->
+<!--              <div class="subscribe-hide">-->
+<!--                <input class="subscribe-email" type="email" id="subscribe-email" name="subscribe-email" placeholder='Email Address' required>-->
+<!--                <button  type="submit" id="subscribe-submit" class="btn btn-md subscribe-btn">Subscribe</button>-->
+<!--                <span id="subscribe-loading" class="btn"> <i class="fa fa-refresh fa-spin"></i> </span>-->
+<!--                <div class="subscribe-error"></div>-->
+<!--              </div><!-- /.subscribe-hide -->
+<!--              <div class="subscribe-message"></div>-->
+<!--            </form><!-- /.subscribe -->
+<!--          </div>-->
+<!--        </div><!-- /.section-details -->
+<!--      </div><!-- /.container -->
+<!--    </div><!-- /.section-padding -->
+<!--  </div><!-- /.parallax-style -->
+<!--</section>-->
 
-              <div class="subscribe-hide">
-                <input class="subscribe-email" type="email" id="subscribe-email" name="subscribe-email" placeholder='Email Address' required>
-                <button  type="submit" id="subscribe-submit" class="btn btn-md subscribe-btn">Subscribe</button>
-                <span id="subscribe-loading" class="btn"> <i class="fa fa-refresh fa-spin"></i> </span>
-                <div class="subscribe-error"></div>
-              </div><!-- /.subscribe-hide -->
-              <div class="subscribe-message"></div>
-            </form><!-- /.subscribe -->
-          </div>
-        </div><!-- /.section-details -->
-      </div><!-- /.container -->
-    </div><!-- /.section-padding -->
-  </div><!-- /.parallax-style -->
-</section><!-- /#subscribe -->
+<!-- /#subscribe -->
 
 <!-- Subscribe -->
 
@@ -2161,13 +2490,15 @@
 
 <!-- Donate Section -->
 
-<section style="display: none" id="action" class="action text-center" data-stellar-background-ratio="0.1" data-stellar-vertical-offset="0.4">
-  <div class="container">
-    <a href="#" class="btn">Help by Become a Volunteer</a>
-    <span class="">or</span>
-    <a href="#" class="btn">Help by Donate for Causes</a>
-  </div><!-- /.container -->
-</section><!-- /#action -->
+<!--<section  id="action" class="action text-center" data-stellar-background-ratio="0.1" data-stellar-vertical-offset="0.4">-->
+<!--  <div class="container">-->
+<!--    <a href="#" class="btn">Help by Become a Volunteer</a>-->
+<!--    <span class="">or</span>-->
+<!--    <a href="#" class="btn">Help by Donate for Causes</a>-->
+<!--  </div>-->
+  <!-- /.container -->
+<!--</section>-->
+<!-- /#action -->
 
 <!-- Donate Section -->
 
@@ -2238,7 +2569,7 @@
     <div class="container">
       <div class="copy-right">
         <ul>
-          <li> &copy; <a href="http://demos.jeweltheme.com/elevation">PYWA SRI LANKA</a> 2018 - </li>
+          <li> &copy; <a href="#">PYWA SRI LANKA</a> 2018 - </li>
           <li> Solutions by <a href="#">Tekto Solutions  </a></li>
         </ul>
       </div><!-- /.copy-right -->
@@ -2264,7 +2595,28 @@
             <i class="fa fa-chevron-up"></i>
           </span>
 </div><!-- /#scroll-to-top -->
+<script type="text/javascript">
+  $(document).ready(function($) {
+$( "#dob" ).datepicker({
+    yearRange: "-80:+0",
+    changeMonth: true,
+    changeYear: true,
+  maxDate: '0',
 
+        onSelect: function () {
+      console.log('s');
+    },
+    onChangeMonthYear: function () {
+      console.log('o');
+    }
+
+  });
+//Pass the user selected date format
+//$( "#format" ).change(function() {
+//$( "#datepicker" ).datepicker( "option", "dateFormat", $(this).val() );
+//});
+});
+</script>
 
 
 <!-- Include Plugins Js -->
@@ -2288,7 +2640,13 @@
 <!-- Include Revolution Slider Js -->
 <script src="assets/js/jquery.themepunch.revolution.min.js"></script>
 <!-- Include Ajax MailChimp Js -->
-<script src="assets/js/jquery.ajaxchimp.min.js"></script>
+<!--<script src="assets/js/jquery.ajaxchimp.min.js"></script>-->
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+<script src="validator.js"></script>
+
+<script src="contact.js"></script>
 
 
 <script type="text/javascript">
@@ -2300,7 +2658,7 @@
     "use strict";
 
     elv(window).load(function(){
-      elv('#preloader').fadeOut('slow',function(){elv(this).remove();});
+      elv('#preloader').fadeOut('fast',function(){elv(this).remove();});
     });
 
     var slider = elv(".elv_slider");
@@ -2397,33 +2755,33 @@
 
 //PopUp Video
 
-    elv('.popup-video').magnificPopup({
-      type: 'iframe',
-
-      iframe: {
-        patterns: {
-          dailymotion: {
-
-            index: 'vimeo.com',
-
-            id: function(url) {
-              var m = url.match(/^.+vimeo.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/);
-              if (m !== null) {
-                if(m[4] !== undefined) {
-
-                  return m[4];
-                }
-                return m[2];
-              }
-              return null;
-            },
-
-            src: 'https://player.vimeo.com/video/33123008'
-          }
-        }
-      }
-
-    });
+//    elv('.popup-video').magnificPopup({
+//      type: 'iframe',
+//
+//      iframe: {
+//        patterns: {
+//          dailymotion: {
+//
+//            index: 'vimeo.com',
+//
+//            id: function(url) {
+//              var m = url.match(/^.+vimeo.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/);
+//              if (m !== null) {
+//                if(m[4] !== undefined) {
+//
+//                  return m[4];
+//                }
+//                return m[2];
+//              }
+//              return null;
+//            },
+//
+//            src: 'https://player.vimeo.com/video/33123008'
+//          }
+//        }
+//      }
+//
+//    });
 
 
 //Magnific popUp
@@ -2443,6 +2801,25 @@
     });
 
 
+
+    elv("#reg-btn").click(function () {
+      var clicks = $(this).data('clicks');
+      if (clicks) {
+      elv(".regfourm").toggle();
+      elv(this).find('.regtitle').text("Join Us");
+      } else {
+        elv(this).find('.regtitle').text("Hide");
+        elv(".regfourm").toggle();
+      }
+      $(this).data("clicks", !clicks);
+
+          });
+
+
+    elv("a[href='#top']").click(function() {
+      $("html, body").animate({ scrollTop: 0 }, "slow");
+      return false;
+    });
 
   });
   // End of Document Ready
@@ -2507,6 +2884,8 @@
 
 
 </script>
+
+
 
 
 </body>
